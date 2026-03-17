@@ -1,24 +1,33 @@
-import { useState } from "react"  
-import Navbar from "./composants/Navbar"
-import Footer from "./composants/Footer"
-import Hero from "./composants/Hero"
-import Produits from "./composants/Produits"
-import Utilisateur from "./composants/Utilisateur"
-const App = () => {
- 
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
+import Hero from "./components/Hero.jsx";
+import Utilisateur from "./components/Utilisateur.jsx";
+
+import Accueil from "./pages/Accueil.jsx"; // ← correction ici
+import Produits from "./pages/Produits.jsx";
+import Contact from "./pages/Contact.jsx";
+import Login from "./pages/Login.jsx";
+
+function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />
-      <main className="main">
-        <Hero/>
-        <Produits/>
-        <Utilisateur/>
-        
+      <main>
+        <Routes>
+          <Route path="/" element={<Accueil />} />
+          <Route path="/produits" element={<Produits />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        <Hero />
+        <Utilisateur />
       </main>
       <Footer />
-    </div>
-  )
+    </>
+  );
 }
 
 export default App;
